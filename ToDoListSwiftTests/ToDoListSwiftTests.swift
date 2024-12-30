@@ -6,7 +6,8 @@
 //
 
 import XCTest
-//@testable import ToDoListSwift
+@testable import ToDoListSwift
+@testable import TodoListModule
 
 final class ToDoListSwiftTests: XCTestCase {
 
