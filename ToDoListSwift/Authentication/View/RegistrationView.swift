@@ -16,9 +16,23 @@ struct RegistrationView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
         VStack {
-            Image("firebaselogo")
+//            Image("firebaselogo")
+//                .resizable()
+//                .scaledToFill()
+//                .frame(width:120, height: 140)
+//                .shadow(
+//                    color: Color(#colorLiteral(red: 0.8654338121, green: 0.1720753014, blue: 0, alpha: 1)).opacity(0.4),
+//                    radius: 5,
+//                        x: 5,
+//                    y: -5
+//                )
+//                .padding(.vertical, 32)
+            
+            // Extra logo
+            Image(systemName: "checkmark.circle.fill")
                 .resizable()
                 .scaledToFill()
+<<<<<<< Updated upstream
                 .frame(width:120, height: 140)
                 .shadow(
                     color: Color(#colorLiteral(red: 0.8654338121, green: 0.1720753014, blue: 0, alpha: 1)).opacity(0.4),
@@ -32,6 +46,10 @@ struct RegistrationView: View {
                         x: -5,
                     y: 5
                 )
+=======
+                .frame(width: 100, height: 120)
+                .foregroundStyle(Color.accentColor)
+>>>>>>> Stashed changes
                 .padding(.vertical, 32)
             VStack(spacing: 24) {
                 InputView(text: $email,
