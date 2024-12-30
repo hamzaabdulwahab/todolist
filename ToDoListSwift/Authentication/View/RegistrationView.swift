@@ -19,7 +19,6 @@ struct RegistrationView: View {
             Image("firebaselogo")
                 .resizable()
                 .scaledToFill()
-         //   Image(systemName: "checkmark.circle.fill")
                 .frame(width:120, height: 140)
                 .shadow(
                     color: Color(#colorLiteral(red: 0.8654338121, green: 0.1720753014, blue: 0, alpha: 1)).opacity(0.4),
@@ -27,14 +26,7 @@ struct RegistrationView: View {
                         x: 5,
                     y: -5
                 )
-             //   .font(.system(size: 10))
                 .padding(.vertical, 32)
-            
-//            Image(systemName: "checkmark.circle.fill")
-//                .font(.system(size: 120))
-//                .foregroundStyle(Color.accentColor)
-//                .padding(.vertical, 32)
-            
             VStack(spacing: 24) {
                 InputView(text: $email,
                           title: "Email Address",
