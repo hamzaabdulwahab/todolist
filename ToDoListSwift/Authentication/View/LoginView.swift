@@ -24,6 +24,12 @@ struct LoginView: View {
                             x: 5,
                         y: -5
                     )
+                    .shadow(
+                        color: Color(#colorLiteral(red: 1, green: 0.7671757936, blue: 0.01299781911, alpha: 1)).opacity(0.4),
+                        radius: 5,
+                            x: -5,
+                        y: 5
+                    )
                     .padding(.vertical, 32)
                 
                 // form  fields
