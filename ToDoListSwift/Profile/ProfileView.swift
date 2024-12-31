@@ -48,8 +48,16 @@ struct ProfileView: View {
                     Section("Account") {
                         Button {
                             viewModel.signOut()
+                            presentationMode.wrappedValue.dismiss() 
                         } label: {
                             SettingsRowView(imageName: "arrow.left.circle.fill", title: "Sign Out", tintColor: .red)
+                        }
+                        .alert(isPresented: $viewModel.showAlert) {
+                            Alert(
+                                title: Text(viewModel.alertTitle),
+                                message: Text(viewModel.alertMessage),
+                                dismissButton: .default(Text("OK"))
+                            )
                         }
                         Button {
                             print("delete account...")
@@ -76,5 +84,8 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    NavigationView{
+        ProfileView()
+    }
+        .environmentObject(AuthViewModel())
 }
