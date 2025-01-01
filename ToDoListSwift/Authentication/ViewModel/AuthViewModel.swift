@@ -20,6 +20,7 @@ class AuthViewModel : ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
+    @Published var isLoading: Bool = false
     
     init () {
         self.userSession = Auth.auth().currentUser
@@ -29,6 +30,7 @@ class AuthViewModel : ObservableObject {
     }
     
     func signIn(withEmail email: String, password:  String) async throws {
+        isLoading = true
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
@@ -39,9 +41,11 @@ class AuthViewModel : ObservableObject {
             alertMessage = error.localizedDescription
             showAlert = true
         }
+        isLoading = false
     }
     
     func createuser(withEmail email: String, password:  String, fullname: String) async throws {
+        isLoading = true
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
@@ -52,6 +56,7 @@ class AuthViewModel : ObservableObject {
         } catch {
             print("DEBUG: Failed to create user with error \(error.localizedDescription)")
         }
+        isLoading = false
     }
     func signOut() {
         do {
@@ -69,7 +74,7 @@ class AuthViewModel : ObservableObject {
         
     }
     
-    func fetchUser() async {
+    private func fetchUser() async {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else {return}
         self.currentUser = try? snapshot.data(as: User.self)
