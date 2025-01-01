@@ -17,7 +17,7 @@ struct ListView: View {
     var body: some View {
         VStack {
             Group {
-                if viewModel.userSession != nil {
+                if let user = viewModel.currentUser {
                     ZStack {
                         if listViewModel.items.isEmpty {
                             NoItemsView()
@@ -60,11 +60,15 @@ struct ListView: View {
                     }
                 } else {
                     LoginView()
+                        .environmentObject(viewModel)
+
+
                 }
             }
         }
         .fullScreenCover(isPresented: $isShowingProfile) {
             ProfileView()
+                .environmentObject(viewModel)
         }
     }
 }
