@@ -16,23 +16,20 @@ struct RegistrationView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
         VStack {
-            Image("firebaselogo")
-                .resizable()
-                .scaledToFill()
-                .frame(width:120, height: 140)
-                .shadow(
-                    color: Color(#colorLiteral(red: 0.8654338121, green: 0.1720753014, blue: 0, alpha: 1)).opacity(0.4),
+            Image(systemName: "checkmark.circle.fill")
+            .resizable()
+            .scaledToFill()
+            .frame(width:120, height: 140)
+            .foregroundStyle(Color.accentColor)
+            .padding(.vertical, 32)
+            .shadow(color: Color.accentColor.opacity(0.3),
                     radius: 5,
-                        x: 5,
-                    y: -5
-                )
-                .shadow(
-                    color: Color(#colorLiteral(red: 1, green: 0.7671757936, blue: 0.01299781911, alpha: 1)).opacity(0.4),
+                    x: 5,
+                    y: 5)
+            .shadow(color: Color.accentColor.opacity(0.3),
                     radius: 5,
-                        x: -5,
-                    y: 5
-                )
-                .padding(.vertical, 32)
+                    x: -5,
+                    y: 0)
             VStack(spacing: 24) {
                 InputView(text: $email,
                           title: "Email Address",
