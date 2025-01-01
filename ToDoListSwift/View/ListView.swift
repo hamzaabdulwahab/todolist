@@ -17,7 +17,11 @@ struct ListView: View {
     var body: some View {
         VStack {
             Group {
-                if let user = viewModel.currentUser {
+                if viewModel.isLoading {
+                                    ProgressView("Loading...")
+                                        .progressViewStyle(CircularProgressViewStyle())
+                                }
+                else if viewModel.currentUser != nil {
                     ZStack {
                         if listViewModel.items.isEmpty {
                             NoItemsView()
