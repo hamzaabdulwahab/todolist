@@ -1,10 +1,3 @@
-//
-//  ProfileView.swift
-//  ToDoListSwift
-//
-//  Created by Hamza Wahab on 29/12/2024.
-//
-
 import SwiftUI
 
 struct ProfileView: View {
@@ -48,7 +41,7 @@ struct ProfileView: View {
                     Section("Account") {
                         Button {
                             viewModel.signOut()
-                            presentationMode.wrappedValue.dismiss() 
+                            presentationMode.wrappedValue.dismiss()
                         } label: {
                             SettingsRowView(imageName: "arrow.left.circle.fill", title: "Sign Out", tintColor: .red)
                         }
@@ -59,8 +52,9 @@ struct ProfileView: View {
                                 dismissButton: .default(Text("OK"))
                             )
                         }
+
                         Button {
-                            print("delete account...")
+                            deleteAccount()
                         } label: {
                             SettingsRowView(imageName: "xmark.circle.fill", title: "Delete Account", tintColor: .red)
                         }
@@ -72,20 +66,24 @@ struct ProfileView: View {
                         Button {
                             presentationMode.wrappedValue.dismiss()
                         } label: {
-                            Image(systemName: "xmark")
-                                .foregroundColor(.primary)
-                                .fontWeight(.semibold)
+                            
                         }
                     }
                 }
             }
         }
     }
-}
 
-#Preview {
-    NavigationView{
-        ProfileView()
+    private func deleteAccount() {
+        Task {
+            do {
+                try await viewModel.deleteAccount()
+                presentationMode.wrappedValue.dismiss()
+            } catch {
+                viewModel.alertTitle = "Delete Account Failed"
+                viewModel.alertMessage = error.localizedDescription
+                viewModel.showAlert = true
+            }
+        }
     }
-        .environmentObject(AuthViewModel())
 }

@@ -1,6 +1,6 @@
 
 import Foundation
-import TodoListModule
+//import TodoListModule
 
 class ListViewModel: ObservableObject {
     @Published var items: [ItemModel] = [] {
@@ -10,9 +10,9 @@ class ListViewModel: ObservableObject {
     }
     @Published var searchText: String = ""
     let itemsKey: String = "items_list"
-    var todoList: TodoList
+//    var todoList: TodoList
     init() {
-        self.todoList = TodoList()
+//        self.todoList = TodoList()
         getItems()
     }
     func getItems() {
@@ -27,7 +27,7 @@ class ListViewModel: ObservableObject {
         items.remove(atOffsets: indexSet)
         for index in indexSet {
                 let cppIndex = Int32(index)
-                todoList.removeItem(cppIndex)
+//                todoList.removeItem(cppIndex)
             }
     }
     
@@ -38,13 +38,13 @@ class ListViewModel: ObservableObject {
     func addItem(title: String) {
         let newItem: ItemModel = ItemModel(title: title, isCompleted: false)
         items.append(newItem)
-        todoList.addItem(title)
+//        todoList.addItem(title)
     }
     
     func updateItem(item: ItemModel) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
             items[index] = item.updateCompletion()
-            todoList.markCompleted(Int32(index))
+//            todoList.markCompleted(Int32(index))
         }
     }
     

@@ -70,8 +70,34 @@ class AuthViewModel : ObservableObject {
         }
     }
     
-    func deleteAccount() {
+    func deleteAccount() async throws {
+        guard let user = Auth.auth().currentUser else {
+            throw NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "No user is signed in."])
+        }
+
+        let userId = user.uid
         
+        // Step 1: Delete Firestore user data
+        do {
+            try await Firestore.firestore().collection("users").document(userId).delete()
+            print("DEBUG: User Firestore data deleted.")
+        } catch {
+            print("ERROR: Failed to delete Firestore user data - \(error.localizedDescription)")
+            throw NSError(domain: "FirestoreError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to delete Firestore user data."])
+        }
+        
+        // Step 2: Delete Firebase Auth user account
+        do {
+            try await user.delete()
+            print("DEBUG: Firebase Auth account deleted.")
+            
+            // Step 3: Clear session and currentUser
+            self.userSession = nil
+            self.currentUser = nil
+        } catch {
+            print("ERROR: Failed to delete Firebase Auth account - \(error.localizedDescription)")
+            throw NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to delete Firebase account. Please try signing out and logging back in to retry."])
+        }
     }
     
     private func fetchUser() async {
