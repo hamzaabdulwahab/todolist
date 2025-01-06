@@ -1,10 +1,3 @@
-//
-//  TodoList.h
-//  ToDoListSwift
-//
-//  Created by Hamza Wahab on 28/12/2024.
-//
-
 #ifndef TodoList_h
 #define TodoList_h
 
@@ -27,4 +20,4 @@ public:
 };
 
 
-#endif /* TodoList_h */
+#endif 

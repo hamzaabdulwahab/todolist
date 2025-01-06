@@ -7,9 +7,9 @@ struct AddView: View {
     @State var textFieldText: String = ""
     @State var alertTitle: String = ""
     @State var showAlert: Bool = false
-
+    
     private let db = Firestore.firestore()
-
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 15) {
@@ -34,13 +34,13 @@ struct AddView: View {
         .navigationTitle("Add an Item 🖍️")
         .alert(isPresented: $showAlert, content: getAlert)
     }
-
+    
     func saveButtonPressed() {
         if textIsAppropriate() {
             saveTaskToFirestore()
         }
     }
-
+    
     func textIsAppropriate() -> Bool {
         if textFieldText.count < 3 {
             alertTitle = "Item must be at least 3 characters long ‼️"
@@ -49,11 +49,11 @@ struct AddView: View {
         }
         return true
     }
-
+    
     func getAlert() -> Alert {
         Alert(title: Text(alertTitle))
     }
-
+    
     /// Save the task to Firestore inside the user's document
     private func saveTaskToFirestore() {
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -61,14 +61,14 @@ struct AddView: View {
             showAlert.toggle()
             return
         }
-
+        
         let newTask = [
             "id": UUID().uuidString,
             "title": textFieldText,
             "isCompleted": false,
             "createdAt": FieldValue.serverTimestamp()
         ] as [String: Any]
-
+        
         db.collection("users") // Main users collection
             .document(userId) // Current user's document
             .collection("tasks") // Subcollection for tasks

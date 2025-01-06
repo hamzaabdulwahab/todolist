@@ -1,10 +1,3 @@
-//
-//  TodoItem.h
-//  ToDoListSwift
-//
-//  Created by Hamza Wahab on 28/12/2024.
-//
-
 #ifndef TodoItem_h
 #define TodoItem_h
 
@@ -21,4 +14,4 @@ struct TodoItem {
     }
 };
 
-#endif /* TodoItem_h */
+#endif 

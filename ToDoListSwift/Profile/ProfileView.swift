@@ -3,7 +3,7 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
-
+    
     var body: some View {
         NavigationView {
             if let user = viewModel.currentUser {
@@ -22,7 +22,7 @@ struct ProfileView: View {
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
                                     .padding(.top, 4)
-
+                                
                                 Text(user.email)
                                     .font(.footnote)
                                     .accentColor(.gray)
@@ -52,7 +52,7 @@ struct ProfileView: View {
                                 dismissButton: .default(Text("OK"))
                             )
                         }
-
+                        
                         Button {
                             deleteAccount()
                         } label: {
@@ -73,7 +73,7 @@ struct ProfileView: View {
             }
         }
     }
-
+    
     private func deleteAccount() {
         Task {
             do {

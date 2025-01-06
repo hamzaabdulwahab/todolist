@@ -1,10 +1,3 @@
-//
-//  RegistrationView.swift
-//  ToDoListSwift
-//
-//  Created by Hamza Wahab on 29/12/2024.
-//
-
 import SwiftUI
 
 struct RegistrationView: View {
@@ -23,13 +16,13 @@ struct RegistrationView: View {
                 .shadow(
                     color: Color(#colorLiteral(red: 0.8654338121, green: 0.1720753014, blue: 0, alpha: 1)).opacity(0.4),
                     radius: 5,
-                        x: 5,
+                    x: 5,
                     y: -5
                 )
                 .shadow(
                     color: Color(#colorLiteral(red: 1, green: 0.7671757936, blue: 0.01299781911, alpha: 1)).opacity(0.4),
                     radius: 5,
-                        x: -5,
+                    x: -5,
                     y: 5
                 )
                 .padding(.vertical, 32)
@@ -37,7 +30,7 @@ struct RegistrationView: View {
                 InputView(text: $email,
                           title: "Email Address",
                           placeHolder: "name@example.com")
-                    .autocapitalization(.none)
+                .autocapitalization(.none)
                 InputView(text: $fullname,
                           title: "Full Name",
                           placeHolder: "Enter your name")
@@ -120,5 +113,5 @@ extension RegistrationView: AuthenticationFormProtocol {
     NavigationView{
         RegistrationView()
     }
-        .environmentObject(AuthViewModel())
+    .environmentObject(AuthViewModel())
 }

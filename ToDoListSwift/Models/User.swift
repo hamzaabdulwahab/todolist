@@ -1,10 +1,3 @@
-//
-//  User.swift
-//  ToDoListSwift
-//
-//  Created by Hamza Wahab on 29/12/2024.
-//
-
 import Foundation
 
 struct User: Identifiable, Codable {

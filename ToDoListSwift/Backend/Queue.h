@@ -17,4 +17,4 @@ public:
     int getSize() const;
 };
 
-#endif /* Queue_h */
+#endif 

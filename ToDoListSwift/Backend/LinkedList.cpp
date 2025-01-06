@@ -1,10 +1,3 @@
-//
-//  LinkedList.cpp
-//  ToDoListSwift
-//
-//  Created by Hamza Wahab on 28/12/2024.
-//
-
 #include "LinkedList.h"
 #include <iostream>
 

@@ -1,10 +1,3 @@
-//
-//  AuthViewModel.swift
-//  ToDoListSwift
-//
-//  Created by Hamza Wahab on 29/12/2024.
-//
-
 import Foundation
 import Firebase
 import FirebaseAuth
@@ -36,7 +29,6 @@ class AuthViewModel : ObservableObject {
             self.userSession = result.user
             await fetchUser()
         } catch {
-            // Set alert properties
             alertTitle = "Sign-In Failed"
             alertMessage = error.localizedDescription
             showAlert = true
@@ -74,10 +66,9 @@ class AuthViewModel : ObservableObject {
         guard let user = Auth.auth().currentUser else {
             throw NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "No user is signed in."])
         }
-
+        
         let userId = user.uid
         
-        // Step 1: Delete Firestore user data
         do {
             try await Firestore.firestore().collection("users").document(userId).delete()
             print("DEBUG: User Firestore data deleted.")
@@ -86,12 +77,10 @@ class AuthViewModel : ObservableObject {
             throw NSError(domain: "FirestoreError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to delete Firestore user data."])
         }
         
-        // Step 2: Delete Firebase Auth user account
         do {
             try await user.delete()
             print("DEBUG: Firebase Auth account deleted.")
             
-            // Step 3: Clear session and currentUser
             self.userSession = nil
             self.currentUser = nil
         } catch {

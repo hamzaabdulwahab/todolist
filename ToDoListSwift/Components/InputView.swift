@@ -1,10 +1,3 @@
-//
-//  InputView.swift
-//  ToDoListSwift
-//
-//  Created by Hamza Wahab on 28/12/2024.
-//
-
 import SwiftUI
 
 struct InputView: View {

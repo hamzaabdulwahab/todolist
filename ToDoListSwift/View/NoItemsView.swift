@@ -1,10 +1,3 @@
-//
-//  NoItemsView.swift
-//  ToDoListSwift
-//
-//  Created by Hamza Wahab on 11/12/2024.
-//
-
 import SwiftUI
 
 struct NoItemsView: View {
@@ -61,6 +54,6 @@ struct NoItemsView: View {
 #Preview {
     NavigationView{
         NoItemsView()
-        .navigationTitle("Title")
+            .navigationTitle("Title")
     }
 }

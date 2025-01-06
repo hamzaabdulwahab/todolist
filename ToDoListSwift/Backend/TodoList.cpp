@@ -1,10 +1,3 @@
-//
-//  TodoList.cpp
-//  ToDoListSwift
-//
-//  Created by Hamza Wahab on 28/12/2024.
-//
-
 #include <stdio.h>
 #include "TodoList.h"
 #include <iostream>

@@ -1,10 +1,3 @@
-//
-//  LinkedList.h
-//  ToDoListSwift
-//
-//  Created by Hamza Wahab on 28/12/2024.
-//
-
 #ifndef LinkedList_h
 #define LinkedList_h
 
@@ -28,4 +21,4 @@ public:
 
 
 
-#endif /* LinkedList_h */
+#endif 
