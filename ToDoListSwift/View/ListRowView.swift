@@ -3,6 +3,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 struct ListRowView: View {
+    @EnvironmentObject var listViewModel: ListViewModel
     let item: ItemModel
     @State private var isCompleted: Bool
     
@@ -17,11 +18,12 @@ struct ListRowView: View {
         HStack {
             Image(systemName: isCompleted ? "checkmark.circle" : "circle")
                 .foregroundStyle(isCompleted ? .green : .red)
-                .onTapGesture {
-                    toggleTaskCompletion()
-                }
             Text(item.title)
             Spacer()
+        }
+        .onTapGesture {
+            toggleTaskCompletion()
+            listViewModel.fetchTasks()
         }
         .font(.title3)
         .padding(.vertical, 3.5)
@@ -43,5 +45,10 @@ struct ListRowView: View {
                     print("Task completion status updated successfully.")
                 }
             }
+        
     }
+}
+
+#Preview {
+    ListRowView(item: ItemModel(title: "ham", isCompleted: true))
 }
