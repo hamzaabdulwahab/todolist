@@ -96,3 +96,6 @@ extension LoginView: AuthenticationFormProtocol {
     
 }
 
+#Preview {
+    LoginView()
+}

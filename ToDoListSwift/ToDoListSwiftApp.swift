@@ -9,8 +9,8 @@ import SwiftUI
 import Firebase
 @main
 struct ToDoListSwiftApp: App {
-    @StateObject var listViewModel: ListViewModel = ListViewModel()
-    @StateObject var viewModel = AuthViewModel()
+    @State var listViewModel: ListViewModel = ListViewModel()
+    @State var viewModel = AuthViewModel()
     
     init() {
         FirebaseApp.configure()
@@ -21,8 +21,8 @@ struct ToDoListSwiftApp: App {
                 ListView()
             }
             .navigationViewStyle(StackNavigationViewStyle())
-            .environmentObject(listViewModel)
-            .environmentObject(viewModel)
+            .environment(listViewModel)
+            .environment(viewModel)
         }
     }
 }
