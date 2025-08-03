@@ -7,13 +7,13 @@ protocol AuthenticationFormProtocol {
     var formIsValid: Bool { get }
 }
 @MainActor
-class AuthViewModel : ObservableObject {
-    @Published var userSession: FirebaseAuth.User?
-    @Published var currentUser: User?
-    @Published var showAlert: Bool = false
-    @Published var alertTitle: String = ""
-    @Published var alertMessage: String = ""
-    @Published var isLoading: Bool = false
+@Observable class AuthViewModel {
+     var userSession: FirebaseAuth.User?
+     var currentUser: User?
+     var showAlert: Bool = false
+     var alertTitle: String = ""
+     var alertMessage: String = ""
+     var isLoading: Bool = false
     
     init () {
         self.userSession = Auth.auth().currentUser

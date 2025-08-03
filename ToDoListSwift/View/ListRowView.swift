@@ -3,7 +3,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 struct ListRowView: View {
-    @EnvironmentObject var listViewModel: ListViewModel
+    @Environment(ListViewModel.self) var listViewModel: ListViewModel
     let item: ItemModel
     @State private var isCompleted: Bool
     
@@ -49,6 +49,6 @@ struct ListRowView: View {
     }
 }
 
-#Preview {
-    ListRowView(item: ItemModel(title: "ham", isCompleted: true))
-}
+//#Preview {
+//    ListRowView(item: ItemModel(title: "ham", isCompleted: true))
+//}

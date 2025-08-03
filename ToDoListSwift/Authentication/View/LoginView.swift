@@ -3,7 +3,7 @@ import SwiftUI
 struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
-    @EnvironmentObject var viewModel: AuthViewModel
+    @Environment(AuthViewModel.self) var viewModel: AuthViewModel
     var body: some View {
         NavigationView {
             VStack{

@@ -4,11 +4,11 @@ import TodoListModule
 import FirebaseFirestore
 import FirebaseAuth
 
-class ListViewModel: ObservableObject {
+@Observable class ListViewModel {
     private let db = Firestore.firestore()
-    @Published var items: [ItemModel] = []
-    @Published var searchText: String = ""
-    @Published var loading = true
+    var items: [ItemModel] = []
+    var searchText: String = ""
+    var loading = true
     let itemsKey: String = "items_list"
     var todoList: TodoList
     init() {
@@ -84,36 +84,4 @@ class ListViewModel: ObservableObject {
         items.append(newItem)
         todoList.addItem(title)
     }
-    //    func getItems() {
-    //        guard
-    //            let data = UserDefaults.standard.data(forKey: itemsKey),
-    //            let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data)
-    //        else { return }
-    //        self.items = savedItems
-    //    }
-    
-    //    func deleteItem(indexSet: IndexSet) {
-    //        items.remove(atOffsets: indexSet)
-    //        for index in indexSet {
-    //            let cppIndex = Int32(index)
-    //            todoList.removeItem(cppIndex)
-    //        }
-    //    }
-    //    func moveItem(from: IndexSet, to: Int) {
-    //        items.move(fromOffsets: from, toOffset: to)
-    //    }
-    
-    
-    //    func updateItem(item: ItemModel) {
-    //        if let index = items.firstIndex(where: { $0.id == item.id }) {
-    //            items[index] = item.updateCompletion()
-    //            todoList.markCompleted(Int32(index))
-    //        }
-    //    }
-    
-    //    func saveItems() {
-    //        if let encodedData = try? JSONEncoder().encode(items) {
-    //            UserDefaults.standard.set(encodedData, forKey: itemsKey)
-    //        }
-    //    }
 }

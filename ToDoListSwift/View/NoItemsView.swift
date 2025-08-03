@@ -51,9 +51,9 @@ struct NoItemsView: View {
     
 }
 
-#Preview {
-    NavigationView{
-        NoItemsView()
-            .navigationTitle("Title")
-    }
-}
+//#Preview {
+//    NavigationView{
+//        NoItemsView()
+//            .navigationTitle("Title")
+//    }
+//}

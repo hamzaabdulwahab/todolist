@@ -3,8 +3,8 @@ import FirebaseFirestore
 import FirebaseAuth
 
 struct ListView: View {
-    @EnvironmentObject var authViewModel: AuthViewModel
-    @EnvironmentObject var listViewModel: ListViewModel
+    @Environment(AuthViewModel.self) var authViewModel: AuthViewModel
+    @Environment(ListViewModel.self) var listViewModel: ListViewModel
     
     
     var body: some View {

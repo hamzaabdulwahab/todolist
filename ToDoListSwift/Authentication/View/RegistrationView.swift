@@ -6,7 +6,7 @@ struct RegistrationView: View {
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var viewModel: AuthViewModel
+    @Environment(AuthViewModel.self) var viewModel: AuthViewModel
     var body: some View {
         VStack {
             Image("firebaselogo")
@@ -109,9 +109,9 @@ extension RegistrationView: AuthenticationFormProtocol {
     }
 }
 
-#Preview {
-    NavigationView{
-        RegistrationView()
-    }
-    .environmentObject(AuthViewModel())
-}
+//#Preview {
+//    NavigationView{
+//        RegistrationView()
+//    }
+//    .environmentObject(AuthViewModel())
+//}
